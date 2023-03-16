@@ -6,7 +6,30 @@ import { useJwPlayer, usePlayerEvent } from '../../JwPlayerContext'
 import { findB2BMediaCandidate } from '../b2b/getB2BCandidate'
 import { getUserInformation, saveUserInformation } from '../b2b/userInformation'
 
-import c from '@/styles/ContentJwVideoArticleVideoExitLink'
+const exitlink_item =  'absolute cursor-pointer font-family:Arial font-normal text-xs';
+const commercial_link = `
+      right-0 
+      no-underline 
+      top-[13%] 
+      bg-[#000000b3]
+      py-1.5
+      px-3
+      text-white
+      hover:opacity-90 
+      active:opacity-90 
+      focus:opacity-90 
+      after:content-['>'] 
+      after:ml-[6px]
+      before:absolute
+      before:inset-[-10px]
+      `;
+const commercial_marking_text= `
+      top-3
+      left-3
+      text-white 
+      w-full 
+      p-3
+      `;
 
 interface ExitLinksPropsType {
   mediaId: string
@@ -131,7 +154,7 @@ export default function ExitLink({
         <a
           target="_blank"
           rel="noopener noreferrer"
-          className={c`commercial_link exitlink_item cts-impression-item`}
+          className={`${commercial_link} ${exitlink_item} cts-impression-item`}
           href={commercialLink as string}
           data-cts-label={ctsLabel}
           data-cts-name={ctsLabel}
@@ -144,7 +167,7 @@ export default function ExitLink({
 
       {/* For commercial ad text */}
       {commercialMarkingText && (
-        <div className={c`commercial_marking_text exitlink_item`}>
+        <div className={`${commercial_marking_text} ${exitlink_item}`}>
           <span>{commercialMarkingText}</span>
         </div>
       )}

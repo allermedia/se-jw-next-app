@@ -39,7 +39,7 @@ export default function Home({data, file}:{data: any, file:string}) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div style={{height: '350px', width: '620px'}}>
+        <div style={{height: '100%', width: '620px'}}>
           <ContentJwVideo data={videoData} type={''} meta={''} descendants={''} /> 
         </div>      
       </>

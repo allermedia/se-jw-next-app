@@ -93,7 +93,12 @@ const ArticleVideo: React.FC<ArticleVideoProps> = (props) => {
   usePlayerEvent(player, DISPLAY_CLICK, deactivateMiniSticky)
   usePlayerEvent(player, PLAYLIST_ITEM, onPlayListItem)
 
-  const figureStyleKeys = `figure figure_layout ${fullWidth ? '' : 'figure_max_width'}`
+  const figure = 'pb-4 border-y border-black border-solid';
+  const figure_layout =  'mx-auto mb-4 md:mb-[30px]';
+  const figure_max_width = 'max-w-[700px]';
+  const caption = 'relative z-[1]';
+
+  const figureStyleKeys = `${figure} ${figure_layout} ${fullWidth ? '' : figure_max_width}`;
   const containerClasses = uiClass.join(' ')
 
   let videoTitle = stripHtml(title)
@@ -123,10 +128,10 @@ const ArticleVideo: React.FC<ArticleVideoProps> = (props) => {
         >
           <JwPlayer {...props} />
           <Unmute ctsLabel="unmute-button"></Unmute>
-          {/* <ExitLink
+          <ExitLink
             {...{ mediaId, b2bInfo, link, linkText, markingText, showNextPopup }}
             ctsLabel="exitLinkButton"
-          ></ExitLink> */}
+          ></ExitLink>
         </Container>
         {enableDesc && (
           <figcaption className={`caption`} itemProp="caption">

@@ -8,12 +8,12 @@ interface Props {
 }
 
 export default function Container({durationMinutes, thumbnail, title, portrait = false, children}: Props) {
-    const aspectClass = portrait ? 'video_area__portrait' : ''
+    const aspectClass = portrait ? 'aspect-portrait' : ''
     return (
-        <div className={`jwplayer_video-videoArea video_area ${aspectClass}`} style={{'backgroundImage': `url('${thumbnail}')`}}>
+        <div className={`jwplayer_video-videoArea group/area relative bg-contain bg-no-repeat bg-center aspect-video ${aspectClass}`} style={{'backgroundImage': `url('${thumbnail}')`}}>
         {durationMinutes && 
-          <div className={`jwplayer_video-time time_left`}>
-            <i className={`time_left_icon`}>
+          <div className={`jwplayer_video-time absolute top-1 right-1 z-[1] flex text-white text-xs group-[.jw-ad-active]/area:hidden group-[.jw-playing]/area:hidden`}>
+            <i className={`flex w-[18px] mr-0.5`}>
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 24 24" xmlSpace="preserve">
                 <path fill="none" d="M12,3.4c-4.7,0-8.6,3.8-8.6,8.6c0,4.7,3.8,8.6,8.6,8.6s8.6-3.8,8.6-8.6C20.6,7.3,16.7,3.4,12,3.4z M17,15
@@ -29,10 +29,10 @@ export default function Container({durationMinutes, thumbnail, title, portrait =
           </div>
         }
         {title && 
-          <div className={`up_next`}>
-              <p className={`up_next_title jwplayer_video-upNext-title`}>Efter reklamen: <span className="jwplayer_video-upNext-title-text">{title}</span></p>
+          <div className={`hidden w-full absolute top-0 right-0 z-[2] p-1 justify-end opacity-0 transition-opacity ease-out duration-500 group-hover/area:opacity-100 group-[.jw-ad-active]/area:flex`}>
+              <p className={`mb-0 text-white text-xs max-w-[80%] overflow-hidden text-ellipsis font-bold whitespace-nowrap jwplayer_video-upNext-title`}>Efter reklamen: <span className="jwplayer_video-upNext-title-text">{title}</span></p>
                {durationMinutes && 
-                  <p className={`up_next_time jwplayer_video-upNext-time`}>
+                  <p className={`mb-0 text-white text-xs ml-[5px] jwplayer_video-upNext-time`}>
                       ({durationMinutes})
                   </p>
               } 

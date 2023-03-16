@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 
 function getVideoLinkLogo(showLink: boolean, ctsLabel: string, mediaId: string) {
-  const logoImage = <Image src={tvLogo} alt="" className={`logo logo_theme`}></Image>
+  const logoImage = <Image src={tvLogo} alt="" className={`m-0`}></Image>
 
   if (showLink) {
     return (
@@ -25,7 +25,7 @@ function getVideoLinkLogo(showLink: boolean, ctsLabel: string, mediaId: string) 
       </Link>
     )
   }
-  return <span className={`logo__wrapper logo__wrapper_theme`}>{logoImage}</span>
+  return <span className={`flex justify-end logo__wrapper_theme`}>{logoImage}</span>
 }
 
 interface Props {
@@ -38,8 +38,8 @@ interface Props {
 const Title: React.FC<Props> = ({ title, showLink, ctsLabel, mediaId }) => {
   const logo = getVideoLinkLogo(showLink, ctsLabel, mediaId)
   return (
-    <figcaption className={`caption title`} itemProp="headline">
-      <span className={`title__text title__text_theme`}>{title}</span>
+    <figcaption className={`relative z-[1] flex justify-between items-start mt-3.5 mb-3`} itemProp="headline">
+      <span className={`grow-0 shrink-0 basis-9/12 non-italic pr-1 md:pr-0 title__text_theme`}>{title}</span>
       {logo}
     </figcaption>
   )
